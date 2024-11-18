@@ -1,4 +1,8 @@
 require("config.lazy")
+require("options") -- the docs say not to manually require this but it wont work if i dont :shrug:
+
+
+-- plugin stuff
 require("mason").setup()
 require("oil").setup()
 require("lspconfig").gopls.setup({
@@ -54,3 +58,4 @@ lspconfig.gopls.setup({
 
 local cfg = {}  -- add your config here
 require "lsp_signature".setup(cfg)
+
