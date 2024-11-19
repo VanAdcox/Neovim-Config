@@ -1,5 +1,7 @@
 require("config.lazy")
-require("options") -- the docs say not to manually require this but it wont work if i dont :shrug:
+--require("options") -- the docs say not to manually require this but it wont work if i dont :shrug:
+vim.wo.relativenumber = true
+vim.api.nvim_set_keymap('n', '-', ':Oil parent<CR>', {noremap = true})
 
 
 -- plugin stuff
