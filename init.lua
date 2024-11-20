@@ -1,3 +1,4 @@
+vim.g.mapleader = " "
 require("config.lazy")
 
 -- Vim Bindings / Options
@@ -14,6 +15,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
 -- plugin stuff
+vim.cmd("colorscheme kanagawa")
 require("mason").setup()
 require("oil").setup()
 require("lspconfig").gopls.setup({
