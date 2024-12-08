@@ -17,7 +17,6 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 -- plugin stuff
 vim.cmd("colorscheme kanagawa")
 require("mason").setup()
-require("oil").setup()
 require("lspconfig").gopls.setup({
 	cmd = { "gopls" },
 	filetypes = { "go" },
@@ -65,6 +64,13 @@ lspconfig.gopls.setup({
                 vim.lsp.buf.signature_help()
             end,
         })
+	-- Automatically format Go files with gofmt on save
+	vim.api.nvim_create_autocmd("BufWritePre", {
+	    pattern = "*.go",
+	    callback = function()
+		vim.lsp.buf.format({ async = false })
+	    end,
+	})
     end,
 })
 
