@@ -7,6 +7,7 @@ vim.wo.relativenumber = true
 
 
 vim.api.nvim_set_keymap('n', '-', ':Oil parent<CR>', {noremap = true})
+vim.opt.signcolumn="number"
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
@@ -67,6 +68,17 @@ lspconfig.gopls.setup({
         })
     end,
 })
+
+lspconfig.omnisharp.setup {
+  cmd = { "omnisharp" }, -- Ensure this points to the correct omnisharp binary
+  root_dir = lspconfig.util.root_pattern(".git", ".sln", ".csproj"),
+  capabilities = vim.lsp.protocol.make_client_capabilities(),
+  on_attach = function(client, bufnr)
+    local opts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+  end,
+}
 
 
 local cfg = {}  -- add your config here
