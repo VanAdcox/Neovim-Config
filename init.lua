@@ -6,7 +6,7 @@ vim.wo.relativenumber = true
 
 
 
-vim.api.nvim_set_keymap('n', '-', ':Oil parent<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '-', [[<cmd>lua if vim.bo.filetype == "oil" then vim.cmd("Oil ..") else vim.cmd("Oil") end<CR>]], { noremap = true, silent = true })
 vim.opt.signcolumn="number"
 
 local builtin = require('telescope.builtin')
@@ -18,6 +18,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 -- plugin stuff
 vim.cmd("colorscheme kanagawa")
 require("mason").setup()
+require("oil").setup()
 require("lspconfig").gopls.setup({
 	cmd = { "gopls" },
 	filetypes = { "go" },
