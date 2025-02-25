@@ -1,5 +1,5 @@
 return {
-	"freddiehaddad/feline.nvim",
+	"famiu/feline.nvim",
 	config = function()
 		local line_ok, feline = pcall(require, "feline")
 		if not line_ok then
