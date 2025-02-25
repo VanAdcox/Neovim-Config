@@ -10,6 +10,8 @@ local config = wezterm.config_builder()
 
 config.term = "xterm-256color"
 
+config.default_prog = { 'powershell' }
+
 local direction_keys = {
     h = "Left",
     j = "Down",
