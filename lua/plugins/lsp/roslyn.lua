@@ -4,24 +4,17 @@ return {
         ft = { "cs", "razor" },
         dependencies = {
             {
-                -- By loading as a dependencies, we ensure that we are available to set
-                -- the handlers for Roslyn.
                 "tris203/rzls.nvim",
                 config = true,
             },
         },
         config = function()
-            -- Use one of the methods in the Integration section to compose the command.
-            local cmd = {}
-
-            vim.lsp.config("roslyn", {
-                cmd = cmd,
+            require("roslyn").setup({
                 handlers = require("rzls.roslyn_handlers"),
                 settings = {
                     ["csharp|inlay_hints"] = {
                         csharp_enable_inlay_hints_for_implicit_object_creation = true,
                         csharp_enable_inlay_hints_for_implicit_variable_types = true,
-
                         csharp_enable_inlay_hints_for_lambda_parameter_types = true,
                         csharp_enable_inlay_hints_for_types = true,
                         dotnet_enable_inlay_hints_for_indexer_parameters = true,
@@ -38,10 +31,8 @@ return {
                     },
                 },
             })
-            vim.lsp.enable("roslyn")
         end,
         init = function()
-            -- We add the Razor file types before the plugin loads.
             vim.filetype.add({
                 extension = {
                     razor = "razor",
