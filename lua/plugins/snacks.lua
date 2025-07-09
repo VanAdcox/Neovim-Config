@@ -12,7 +12,6 @@ return {
     input = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
-    scroll = { enabled = true },
     picker = { enabled = true },
     -- look at this later words = { enabled = true },
   },

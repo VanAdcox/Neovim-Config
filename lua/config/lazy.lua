@@ -23,6 +23,13 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.number = true
+vim.o.signcolumn = "yes"
+vim.api.nvim_set_keymap('n', '-', [[<cmd>lua if vim.bo.filetype == "oil" then vim.cmd("Oil ..") else vim.cmd("Oil") end<CR>]], { noremap = true, silent = true })
+vim.o.updatetime = 250 -- Faster CursorHold
+vim.cmd([[
+  autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})
+]])
+
 
 -- Setup lazy.nvim
 require("lazy").setup({
