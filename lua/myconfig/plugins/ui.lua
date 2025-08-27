@@ -15,5 +15,6 @@ return {
     },
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  { "rebelot/kanagawa.nvim" },
 }
 
