@@ -14,11 +14,14 @@ return {
       local lspconfig = require("lspconfig")
       local on_attach = function(_, bufnr)
         local map = vim.keymap.set
-        map("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+        map("n", "K", function()
+          if not vim.diagnostic.open_float(0, {focus=false, scope="cursor"}) then
+            vim.lsp.buf.hover()
+          end
+        end, { buffer = bufnr, desc = "Show diagnostics or hover" })
         map("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
-        -- Add more mappings as needed
+        map("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
       end
-
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       for _, server in ipairs({ "gopls", "pyright", "clangd" }) do

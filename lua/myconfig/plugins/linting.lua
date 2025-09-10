@@ -7,7 +7,7 @@ return {
 
       lint.linters_by_ft = {
         python = { "ruff" },
-        go = { "golangci_lint" },
+        go = { "golangcilint" },
         cpp = { "clangtidy" },
       }
 
