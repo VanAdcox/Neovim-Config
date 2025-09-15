@@ -16,3 +16,4 @@ require("myconfig.lazy")
 vim.cmd("colorscheme kanagawa")
 require("oil").setup()
 
+require("myconfig.commands")
